@@ -1,0 +1,122 @@
+  {{>homeNavBar}}
+
+  <div class="parallax-container" style="height: 300px">
+    <div class="parallax"><img src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-575627.jpg"></div>
+  </div>
+
+  <div class="section white hoverable ">
+    {{#if home}}
+    <div class="row container center-align">
+      <h1>Mongoose Scraper!</h1>
+      <p>Welcome!</p>
+    </div>
+    {{else}}
+    <div class="row container center-align">
+      <h1>Saved Articles</h1>
+      <p>Your Saved Articles</p>
+    </div>
+    {{/if}}
+
+    {{#if article}}
+    <div class="row container">
+      <ul class="collapsible" data-collapsible="accordion">
+        {{#if home}}
+        {{#each article}}
+
+        <li id={{this._id}}>
+          <div class="collapsible-header grey lighten-2"><i class="large material-icons">account_balance_wallet</i> {{this.title}}</div>
+          <div class="collapsible-body">
+            <span>{{this.summary}}</span>
+            <br><br>
+            <a class="btn save-btn waves-effect waves-light blue darken-4" artId={{this._id}}>Save Article</a>
+          </div>
+        </li>
+
+        {{/each}}
+        {{else}}
+        {{#each article}}
+
+        <li id={{this._id}}>
+          <div class="collapsible-header grey lighten-2">
+            <i class="large material-icons">account_balance_wallet</i> {{this.title}} 
+
+          </div>
+          <div class="collapsible-body">
+            <span>{{this.summary}}</span>
+            <br><br>
+
+            <a class="btn add-btn waves-effect waves-light blue darken-4" artId={{this._id}}><i class="medium material-icons">add</i> Add note</a>
+
+            <a class="btn delete-btn red waves-effect waves-light" artId={{this._id}}><i class="medium material-icons">delete_forever</i> Delete From Saved</a>
+            
+          </div>
+        </li>
+
+        {{/each}}
+        {{/if}}  
+      </ul>
+    </div>
+    {{else}}
+    <div class="row container">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header grey lighten-2"><i class="large material-icons">account_balance_wallet</i> No Articles Found Please Use Scraper!
+          </div>
+        </li> 
+      </ul>
+    </div>
+    {{/if}}
+
+  </div>
+
+
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+    <div id="modal-content-id">
+      <ul class="collection">
+
+       <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Title</span>
+        <p>First Line </p>
+        <a href="#!" class="secondary-content"><i class="medium material-icons red-text">delete_sweep</i></a>
+      </li>
+      </ul>
+    </div>
+    <br>
+    <div class="row">
+      <form class="col m12">
+        <div class="row">
+          <div class="input-field col m6 offset-m3">
+            <i class="material-icons prefix">mode_edit</i>
+            <textarea id="note" class="materialize-textarea"></textarea>
+            <label for="note">New Note</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <a class="modal-action waves-effect waves-green btn blue darken-4" id="save-note-btn">Save Note</a>
+    <a class="modal-action modal-close waves-effect waves-green btn orange darken-1" >Close</a>
+  </div>
+  
+</div>
+
+
+
+
+<div class="parallax-container">
+  <div class="parallax"><img src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-575627.jpg"></div>
+</div>
+
+
+
+
+
+
+{{>footer}}
+<script src="../../js/home.js"></script>
+
